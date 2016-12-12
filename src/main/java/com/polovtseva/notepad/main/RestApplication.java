@@ -27,23 +27,6 @@ public class RestApplication {
         // add a shutdown hook for the above context...
         ctx.registerShutdownHook();*/
         Security.addProvider(new org.bouncycastle.jce.provider.BouncyCastleProvider());
-        try {
-            PrivateKey ks = KeyStoreUtil.readEntry("mydomain", "mydomain");
-            KeyStoreUtil.writeEntry("lala", ks, "mydomain");
-            File f = FileServiceImpl.getInstance().find("1221");
-            f.setValue("11");
-            FileServiceImpl.getInstance().save(f);
-            System.out.println(ks);
-        } catch (KeyStoreException e) {
-            e.printStackTrace();
-        } catch (CertificateException e) {
-            e.printStackTrace();
-        } catch (NoSuchAlgorithmException e) {
-            e.printStackTrace();
-        } catch (UnrecoverableEntryException e) {
-            e.printStackTrace();
-        }
-
         SpringApplication.run(RestApplication.class, args);
     }
 }
