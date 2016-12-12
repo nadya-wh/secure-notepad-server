@@ -11,7 +11,7 @@ public class KeyStoreUtil {
     private static String keyStore = "KeyStore.jks";
     private static ClassLoader loader = ClassLoader.getSystemClassLoader();
 
-    private static File file = new File(loader.getResource(keyStore).getFile());
+    private static File file = new File(keyStore);
 
     public static void writeEntry(String alias, PrivateKey key, String password)
             throws KeyStoreException,
