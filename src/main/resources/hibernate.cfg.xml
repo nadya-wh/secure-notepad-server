@@ -4,10 +4,10 @@
         "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
     <session-factory>
-        <property name="connection.url">jdbc:mysql://localhost:3306/notepad</property>
+        <property name="connection.url">jdbc:mysql://us-cdbr-iron-east-04.cleardb.net/heroku_9a5d7297ea49714?reconnect=true</property>
         <property name="connection.driver_class">com.mysql.cj.jdbc.Driver</property>
-        <property name="connection.username">root</property>
-        <property name="connection.password">5245</property>
+        <property name="connection.username">b8f69b6ba5551a</property>
+        <property name="connection.password">26af203c</property>
         <property name="show_sql">false</property>
         <property name="hibernate.enable_lazy_load_no_trans">true</property>
 
