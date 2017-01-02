@@ -94,7 +94,7 @@ public class UserController {
         }
         if (SignatureUtil.verify(password, signature, rsaKey)) {
 
-            if (userService.find(login)) {
+            if (userService.find(login) != null) {
                 sessionKeyWrapper.setErrorMessage("Such user already exists.");
                 return new ResponseEntity<>(sessionKeyWrapper, HttpStatus.CONFLICT);
             }
@@ -112,6 +112,18 @@ public class UserController {
         }
         sessionKeyWrapper.setErrorMessage("Signature was not verified.");
         return new ResponseEntity<>(sessionKeyWrapper, HttpStatus.FORBIDDEN);
+    }
+
+    @RequestMapping(method = RequestMethod.POST, value = "/user/block")
+    public ResponseEntity<String> blockUser(@RequestParam(value = "login") String login) {
+        User user = userService.find(login);
+        if (user != null) {
+            user.setBlocked(true);
+            userService.save(user);
+            return new ResponseEntity<String>("User was blocked", HttpStatus.OK);
+        } else {
+            return new ResponseEntity<String>("User wasn't blocked", HttpStatus.FORBIDDEN);
+        }
     }
 
     public static Boolean userExists(String sessionKey) {

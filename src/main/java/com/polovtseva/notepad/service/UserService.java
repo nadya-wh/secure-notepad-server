@@ -11,9 +11,7 @@ public interface UserService {
 
     void save(User user) throws ServiceException;
 
-    User find(String login, String password, String secretToken) throws ServiceException;
-
     User find(String login, String password) throws ServiceException;
 
-    Boolean find(String login) throws ServiceException;
+    User find(String login) throws ServiceException;
 }

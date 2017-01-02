@@ -37,14 +37,14 @@ public class UserServiceImpl implements UserService {
         }
     }
 
-    @Override
-    public User find(String login, String password, String secretToken) throws ServiceException {
-        try {
-            return userDAO.find(login, password, secretToken);
-        } catch (DAOException e) {
-            throw new ServiceException(e);
-        }
-    }
+//    @Override
+//    public User find(String login, String password, String secretToken) throws ServiceException {
+//        try {
+//            return userDAO.find(login, password, secretToken);
+//        } catch (DAOException e) {
+//            throw new ServiceException(e);
+//        }
+//    }
 
     @Override
     public User find(String login, String password) throws ServiceException {
@@ -56,11 +56,12 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public Boolean find(String login) throws ServiceException {
+    public User find(String login) throws ServiceException {
         try {
             return userDAO.find(login);
         } catch (DAOException e) {
             throw new ServiceException(e);
         }
     }
+
 }

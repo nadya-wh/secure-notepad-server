@@ -11,5 +11,5 @@ public interface UserDAO extends AbstractDAO<User> {
 
     User find(String login, String password) throws DAOException;
 
-    Boolean find(String login) throws DAOException;
+    User find(String login) throws DAOException;
 }

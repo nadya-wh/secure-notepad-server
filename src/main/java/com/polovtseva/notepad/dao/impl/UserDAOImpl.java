@@ -23,7 +23,7 @@ public class UserDAOImpl implements UserDAO {
 
     private static String FIND_USER = "from User where login = :login AND password = :password AND secretToken = :secretToken";
 
-    private static String FIND_USER_LOGIN_PASSWORD = "from User where login = :login AND password = :password";
+    private static String FIND_USER_LOGIN_PASSWORD = "from User where login = :login AND password = :password AND isBlocked = false";
 
     private static String FIND_USER_LOGIN = "from User where login = :login";
 
@@ -73,14 +73,14 @@ public class UserDAOImpl implements UserDAO {
     }
 
     @Override
-    public Boolean find(String login) throws DAOException {
+    public User find(String login) throws DAOException {
         Session session = null;
         try {
             session = SessionWrapper.getSessionFactory().openSession();
             Query query = session.createQuery(FIND_USER_LOGIN);
             query.setParameter("login", login);
             List<User> userList = query.list();
-            return userList.size() == 1;
+            return userList.size() == 1 ? userList.get(0) : null;
         } catch (HibernateException e) {
             throw new DAOException(e);
         } finally {

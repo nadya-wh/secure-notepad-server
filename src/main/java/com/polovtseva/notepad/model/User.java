@@ -27,6 +27,9 @@ public class User implements Serializable{
     @Column(name = "secret_token")
     private String secretToken;
 
+    @Column(name = "is_blocked")
+    private Boolean isBlocked;
+
     public User() {
     }
 
@@ -71,5 +74,13 @@ public class User implements Serializable{
 
     public void setUserId(Long userId) {
         this.userId = userId;
+    }
+
+    public Boolean getBlocked() {
+        return isBlocked;
+    }
+
+    public void setBlocked(Boolean blocked) {
+        isBlocked = blocked;
     }
 }

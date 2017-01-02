@@ -14,5 +14,6 @@ public class SessionWrapper {
             sessionFactory =  new Configuration().configure().buildSessionFactory();
         }
        return sessionFactory;
+//       return null;
     }
 }
