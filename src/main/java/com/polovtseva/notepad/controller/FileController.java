@@ -89,11 +89,12 @@ public class FileController {
             }
             try {
                 fileService.save(file);
+                return new ResponseEntity<>(file, HttpStatus.OK);
             } catch (ServiceException e) {
                 // TODO: 10/22/2016 logs
                 e.printStackTrace();
             }
-            return new ResponseEntity<>(file, HttpStatus.OK);
+            return new ResponseEntity<>(file, HttpStatus.FORBIDDEN);
         } else {
             return new ResponseEntity<>(file, HttpStatus.FORBIDDEN);
         }
@@ -101,8 +102,8 @@ public class FileController {
 
     @RequestMapping(method = RequestMethod.POST, value = "/key")
     public ResponseEntity<FileKey> getKey(@RequestParam(value = "name") String filename,
-                                         @RequestParam(value = "sessionKey") String sessionKey,
-                                         @RequestParam(value = "signature") String signature) {
+                                          @RequestParam(value = "sessionKey") String sessionKey,
+                                          @RequestParam(value = "signature") String signature) {
         FileKey keyForFile = null;
         SecretSession secretSession = UserController.takeSession(sessionKey);
         PublicKey publicKey = secretSession.getPublicKey();
@@ -122,8 +123,8 @@ public class FileController {
 
     @RequestMapping(method = RequestMethod.POST, value = "/keys")
     public ResponseEntity<FileKey> saveKey(@RequestParam(value = "name") String filename,
-                                          @RequestParam(value = "sessionKey") String sessionKey,
-                                          @RequestParam(value = "signature") String signature) {
+                                           @RequestParam(value = "sessionKey") String sessionKey,
+                                           @RequestParam(value = "signature") String signature) {
         FileKey keyForFile = null;
         SecretSession secretSession = UserController.takeSession(sessionKey);
         PublicKey publicKey = secretSession.getPublicKey();
