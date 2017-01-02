@@ -31,17 +31,19 @@ public class User implements Serializable{
     private Boolean isBlocked;
 
     public User() {
+        this.isBlocked = false;
     }
-
     public User(String login, String password) {
         this.login = login;
         this.password = password;
+        this.isBlocked = false;
     }
 
     public User(String login, String password, String secretToken) {
         this.login = login;
         this.password = password;
         this.secretToken = secretToken;
+        this.isBlocked = false;
     }
 
     public String getLogin() {

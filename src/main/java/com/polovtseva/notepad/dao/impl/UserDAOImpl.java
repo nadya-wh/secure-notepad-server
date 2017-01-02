@@ -23,7 +23,7 @@ public class UserDAOImpl implements UserDAO {
 
     private static String FIND_USER = "from User where login = :login AND password = :password AND secretToken = :secretToken";
 
-    private static String FIND_USER_LOGIN_PASSWORD = "from User where login = :login AND password = :password AND isBlocked = false";
+    private static String FIND_USER_LOGIN_PASSWORD = "from User where login = :login AND password = :password";
 
     private static String FIND_USER_LOGIN = "from User where login = :login";
 
